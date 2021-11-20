@@ -53,7 +53,7 @@ python =
 deps =
     pytest
 commands =
-    pytest
+    pytest -v --color=yes
 
 [testenv:pre-commit]
 skip_install = true
