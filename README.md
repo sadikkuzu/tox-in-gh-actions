@@ -59,12 +59,19 @@ python =
 deps =
     pytest
 commands =
-    pytest -v --color=yes
+    pytest
 
 [testenv:pre-commit]
 skip_install = true
 deps = pre-commit
 commands = pre-commit run --all-files --show-diff-on-failure --color=always
+```
+
+`pytest.ini`
+
+```ini
+[pytest]
+addopts = -v --color=yes
 ```
 
 
