@@ -67,7 +67,7 @@ jobs:
 
 ```ini
 [tox]
-envlist = 
+envlist =
     py3{7,8,9,10,11}
     pre-commit
 skipsdist = true
