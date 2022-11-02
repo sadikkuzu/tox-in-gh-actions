@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, "3.10"]
+        python-version: [3.7, 3.8, 3.9, "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v3
@@ -67,7 +67,9 @@ jobs:
 
 ```ini
 [tox]
-envlist = py37,py38,py39,py310,pre-commit
+envlist = 
+    py3{7,8,9,10,11}
+    pre-commit
 skipsdist = true
 
 [gh-actions]
@@ -76,12 +78,13 @@ python =
     3.8: py38
     3.9: py39
     3.10: py310, pre-commit
+    3.11: py311
 
 [testenv]
 deps =
-    pytest
+    pytest-cov
 commands =
-    pytest
+    pytest --cov=.
 
 [testenv:pre-commit]
 skip_install = true
