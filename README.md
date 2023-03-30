@@ -1,5 +1,8 @@
 # tox-in-gh-actions
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/sadikkuzu/tox-in-gh-actions/main.svg)](https://results.pre-commit.ci/latest/github/sadikkuzu/tox-in-gh-actions/main)
+[![codecov](https://codecov.io/gh/sadikkuzu/tox-in-gh-actions/branch/main/graph/badge.svg?token=MNPRC25MUI)](https://codecov.io/gh/sadikkuzu/tox-in-gh-actions)
+
 ## tox in GitHub Actions
 
 
