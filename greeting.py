@@ -8,8 +8,9 @@ def hello(name: str) -> None:
 
 
 def main() -> int:
-    hello(sys.argv[1])
+    hello(sys.argv[-1])
+    return 0
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     raise SystemExit(main())
