@@ -22,36 +22,36 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13", "3.14", "3.15"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
     - name: set PY
       run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-    - uses: actions/cache@v4
+    - uses: actions/cache@v6
       if: startsWith(runner.os, 'Linux')
       with:
         path: ~/.cache/pre-commit
         key: ${{ runner.os }}|pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
-    - uses: actions/cache@v4
+    - uses: actions/cache@v6
       if: startsWith(runner.os, 'Linux')
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-gh.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    - uses: actions/cache@v4
+    - uses: actions/cache@v6
       if: startsWith(runner.os, 'macOS')
       with:
         path: ~/Library/Caches/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-gh.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-    - uses: actions/cache@v4
+    - uses: actions/cache@v6
       if: startsWith(runner.os, 'Windows')
       with:
         path: ~\AppData\Local\pip\Cache
@@ -71,17 +71,17 @@ jobs:
 ```ini
 [tox]
 envlist =
-    py3{8,9,10,11,12}
+    py3{11,12,13,14,15}
     pre-commit
 skipsdist = true
 
 [gh-actions]
 python =
-    3.8: py38
-    3.9: py39
-    3.10: py310
-    3.11: py311, pre-commit
+    3.11: py311
     3.12: py312
+    3.13: py313
+    3.14: py314, pre-commit
+    3.15: py315
 
 [testenv]
 deps =
